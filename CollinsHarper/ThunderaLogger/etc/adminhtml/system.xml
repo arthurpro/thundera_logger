@@ -7,10 +7,34 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="payment" translate="label" type="text" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
+        <tab id="thundera_logger" translate="label" sortOrder="10">
             <label>Thundera Logger</label>
-            <tab>sales</tab>
-            <resource>Magento_Payment::payment</resource>
+        </tab>
+        <section id="thundera" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Thundera Logger</label>
+            <tab>thundera_logger</tab>
+            <resource>CollinsHarper_ThunderaLogger::thundera_configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="graylog_host" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Graylog host address</label>
+                    <comment>IP address of graylog server</comment>
+                </field>
+                <field id="graylog_port" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Graylog port address</label>
+                    <comment>Port address of graylog server</comment>
+                </field>
+                <field id="graylog_level" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Specify minimal log level to send to Graylog</label>
+                    <source_model>CollinsHarper\ThunderaLogger\Model\Source\LogLevel</source_model>
+                    <comment>i.e: NOTICE = 250 (Monolog) and 2 (Graylog)</comment>
+                </field>
+            </group>
         </section>
     </system>
 </config>

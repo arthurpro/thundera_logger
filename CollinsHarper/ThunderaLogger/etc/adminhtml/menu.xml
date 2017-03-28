@@ -7,6 +7,8 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="CollinsHarper_ThunderaLogger::logger" title="Thundera Logger" translate="title" module="CollinsHarper_ThunderaLogger" sortOrder="15" dependsOnModule="CollinsHarper_ThunderaLogger" resource="CollinsHarper_ThunderaLogger::logger"/>
+        <add id="CollinsHarper_ThunderaLogger::logger" title="Thundera Logger" module="CollinsHarper_ThunderaLogger" sortOrder="51" resource="CollinsHarper_ThunderaLogger::logger"/>
+        <add id="CollinsHarper_ThunderaLogger::url" title="GrayLog Interface" module="CollinsHarper_ThunderaLogger" sortOrder="10" action="collinsharper_thunderalogger/redirect" resource="CollinsHarper_ThunderaLogger::url" parent="CollinsHarper_ThunderaLogger::logger"/>
+        <add id="CollinsHarper_ThunderaLogger::thundera_configuration" title="Configuration" module="CollinsHarper_ThunderaLogger" sortOrder="99" parent="CollinsHarper_ThunderaLogger::logger" action="adminhtml/system_config/edit/section/thundera" resource="CollinsHarper_ThunderaLogger::thundera_configuration"/>
     </menu>
 </config>
